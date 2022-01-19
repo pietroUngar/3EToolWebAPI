@@ -1,1 +1,1 @@
-web:gunicorn 3EToolWebAPI.wsgj
+web:gunicorn EEEToolApp.wsgi
