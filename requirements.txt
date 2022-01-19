@@ -1,5 +1,5 @@
 Django~=4.0.1
-3ETool
+3ETool==0.3.6
 gunicorn
 whitenoise
 requests
