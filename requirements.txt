@@ -1,4 +1,5 @@
 Django~=4.0.1
+googledrivedownloader
 3ETool==0.3.6
 gunicorn
 whitenoise
