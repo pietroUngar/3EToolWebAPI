@@ -1,1 +1,1 @@
-web:gunicorn EEEToolApp.wsgi
+web: gunicorn EEEToolApp.wsgi
