@@ -1,10 +1,10 @@
 from EEETools.Tools.API.ExcelAPI.modules_importer import calculate_excel
 from EEETools.Tools.API.Tools.file_handler import get_file_position
-from EEEToolApp.settings import MEDIA_ROOT
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import ExcelUploadForm
 from .models import ExcelFile
+import EEEToolApp.settings
 import os
 
 
@@ -55,7 +55,7 @@ def calculate_and_download(request):
 
         if len(ExcelFile.objects.all()) > 0:
 
-            excel_path = os.path.join(MEDIA_ROOT, request.POST["select"])
+            excel_path = os.path.join(EEEToolApp.settings.MEDIA_ROOT, request.POST["select"])
 
             try:
 
