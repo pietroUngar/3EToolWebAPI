@@ -1,1 +1,1 @@
-web: gunicorn 3EToolWebAPI.wsgi
+web: gunicorn --pythonpath EEEToolApp EEEToolApp.wsgi
