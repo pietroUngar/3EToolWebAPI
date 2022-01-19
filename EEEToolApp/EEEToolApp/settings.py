@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-clb1pl4fm^!*&%d0svlv-q&cd88ob2h1#-sd*h3i_m3^55=%4-'
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','vacad22.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','eeetool-webapp.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
