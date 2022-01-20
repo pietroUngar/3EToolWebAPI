@@ -59,11 +59,12 @@ def calculate_and_download(request):
 
             for object in ExcelFile.objects.all():
                 if str(object) == select_result:
-                    excel_path = object.file.path
+                    excel_path = object.file
 
             try:
 
-                calculate_excel(excel_path)
+                file = excel_path.open(mode='rb')
+                calculate_excel(file)
 
             except Exception as e:
 
