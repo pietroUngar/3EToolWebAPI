@@ -63,7 +63,8 @@ def calculate_and_download(request):
 
             except Exception as e:
 
-                console_text = "ERROR:\n{}\n\nFILE PATH:\n{}".format(e, excel_path)
+                import platform
+                console_text = "ERROR:\n{}\n\nIS PATH:\n{}\n\nCURRENT OS:\n{}".format(e, os.path.exists(excel_path), platform.system())
 
             else:
 
