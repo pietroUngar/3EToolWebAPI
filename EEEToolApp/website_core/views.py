@@ -63,7 +63,7 @@ def calculate_and_download(request):
 
             except Exception as e:
 
-                console_text = "!!! Error in the calculations !!!\n\nERROR:\n {}".format(e)
+                console_text = "ERROR:\n{}\n\nFILE PATH:\n{}".format(e, excel_path)
 
             else:
 
