@@ -55,7 +55,11 @@ def calculate_and_download(request):
 
         if len(ExcelFile.objects.all()) > 0:
 
-            excel_path = os.path.join(EEEToolApp.settings.MEDIA_ROOT, request.POST["select"])
+            select_result = request.POST["select"]
+
+            for object in ExcelFile.objects.all():
+                if str(object) == select_result:
+                    excel_path = object.file.path
 
             try:
 

@@ -8,7 +8,7 @@ class ExcelFile(models.Model):
 
     def __str__(self):
 
-        return str(self.file)
+        return str(self.file).strip("excel_files/")
 
     def delete(self, *args, **kwargs):
 
