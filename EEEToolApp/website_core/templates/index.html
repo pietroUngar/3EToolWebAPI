@@ -38,6 +38,7 @@
 
   </head>
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body">
+
     <header class="u-clearfix u-header u-sticky u-white u-header" id="sec-7e6f">
         <div class="u-clearfix u-sheet u-sheet-1">
             <a href="{% url 'home' %}" class="u-image u-logo u-image-1" data-image-width="3508" data-image-height="2479">
@@ -82,6 +83,7 @@
         </div>
 
     </header>
+
     <section class="u-align-center u-clearfix u-image u-shading u-valign-middle u-section-1" src="" id="sec-61c9" data-image-width="2400" data-image-height="1600">
       <div class="u-container-style u-group u-group-1">
         <div class="u-container-layout u-valign-bottom-xl u-container-layout-1">
@@ -129,11 +131,12 @@
         <h2 class="u-text u-text-1">Output Console</h2>
         <div class="u-container-style u-expanded-width-sm u-expanded-width-xs u-grey-10 u-group u-group-1">
           <div class="u-container-layout u-valign-top u-container-layout-1">
-            <p class="u-text u-text-2">{{console_text}}</p>
+            <p class="u-text u-text-2">{{console_text|linebreaks}}</p>
           </div>
         </div>
       </div>
     </section>
+
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-4619">
         <div class="u-clearfix u-sheet u-valign-middle-sm u-valign-middle-xs u-sheet-1">
         <a href="https://www.dief.unifi.it/vp-177-serg-group-english-version.html">

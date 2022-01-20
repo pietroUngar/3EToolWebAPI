@@ -63,7 +63,7 @@ def calculate_and_download(request):
 
             except Exception as e:
 
-                console_text = "error in the calculations!<br>error: {}".format(str(e))
+                console_text = "!!! Error in the calculations !!!\n\nERROR:\n {}".format(e)
 
             else:
 
