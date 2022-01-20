@@ -1,4 +1,5 @@
 from django.db import models
+import os.path
 
 
 class ExcelFile(models.Model):
@@ -8,7 +9,7 @@ class ExcelFile(models.Model):
 
     def __str__(self):
 
-        return str(self.file).strip("excel_files/")
+        return str(os.path.basename(self.file.path))
 
     def delete(self, *args, **kwargs):
 
