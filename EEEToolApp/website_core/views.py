@@ -1,19 +1,31 @@
 from EEETools.Tools.API.ExcelAPI.modules_importer import calculate_excel
 from EEETools.Tools.API.Tools.file_handler import get_file_position
+from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
+import EEEToolApp.settings as settings
 from django.http import HttpResponse
-from .forms import ExcelUploadForm
-from .models import ExcelFile
-import EEEToolApp.settings
 import os
 
 
+fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, "excel_files"))
 DEFAULT_CONSOLE_MESSAGE = "Upload the compiled excel file in order to start the calculations"
 
 
 def home(request):
 
-    return __render_home(request, DEFAULT_CONSOLE_MESSAGE)
+    console_text = DEFAULT_CONSOLE_MESSAGE
+
+    if request.method == 'POST':
+
+        try:
+
+            return __upload_excel(request)
+
+        except:
+
+            console_text = "Error in file upload!"
+
+    return __render_home(request, console_text)
 
 
 def download(request, filename=""):
@@ -35,36 +47,55 @@ def download(request, filename=""):
 
 def clear_files(request):
 
-    print(clear_files)
-    objects = ExcelFile.objects.all()
-    n_object = len(objects)
+    file_list = __get_file_list()
+    n_object = len(file_list)
 
-    for object in objects:
+    if n_object == 1:
 
-        object.delete()
+        pm = ""
 
-    console_message = "{} Excel Files Deleted".format(n_object)
+    else:
+
+        pm = "S"
+
+    console_message = "{} EXCEL FILE{} DELETED".format(n_object, pm)
+
+    file_name = ""
+
+    try:
+
+        for file_name in file_list:
+
+            fs.delete(file_name)
+
+    except Exception as e:
+
+        console_message = "ERROR IN DELETING A FILE:\nEXCEL NAME:\n{}\n\nERROR:\n{}".format(file_name, e)
+
     return __render_home(request, console_message)
 
 
 def calculate_and_download(request):
 
+    console_text = DEFAULT_CONSOLE_MESSAGE
+
     if request.method == 'POST':
 
-        console_text = "no excel file selected!"
+        console_text = "NO EXCEL FILE SELECTED!"
 
-        if len(ExcelFile.objects.all()) > 0:
+        if len(__get_file_list()) > 0:
 
             select_result = request.POST["select"]
+            excel_path = ""
 
-            for object in ExcelFile.objects.all():
-                if str(object) == select_result:
-                    excel_path = object.file
+            for file_name in __get_file_list():
+
+                if str(file_name) == select_result:
+                    excel_path = file_name
 
             try:
 
-                file = excel_path.open(mode='rb')
-                calculate_excel(file)
+                calculate_excel(fs.path(excel_path))
 
             except Exception as e:
 
@@ -73,66 +104,37 @@ def calculate_and_download(request):
 
             else:
 
-                with open(excel_path, 'rb') as file:
+                with open(fs.path(excel_path), 'rb') as file:
 
                     response = HttpResponse(file.read(), content_type='application/adminupload')
                     response['Content-Disposition'] = 'inline;filename=' + excel_path
 
                 return response
 
-        object_list = list()
-        for object in ExcelFile.objects.all():
-            object_list.append(str(object))
-
-        return render(request, 'index.html', {
-
-            "console_text": console_text,
-            "form": ExcelUploadForm,
-            "object_list": object_list
-
-        })
-
-    return __render_home(request, DEFAULT_CONSOLE_MESSAGE)
+    return __render_home(request, console_text)
 
 
 def __render_home(request, console_text):
 
-    if request.method == 'POST':
+    return render(request, 'index.html', {
 
-        return __upload_excel(request)
+        "console_text": console_text,
+        "object_list": __get_file_list()
 
-    else:
-
-        object_list = list()
-        for object in ExcelFile.objects.all():
-            object_list.append(str(object))
-
-        return render(request, 'index.html', {
-
-            "console_text": console_text,
-            "form": ExcelUploadForm,
-            "object_list": object_list
-
-        })
+    })
 
 
 def __upload_excel(request):
 
-    form = ExcelUploadForm(request.POST, request.FILES)
+    uploaded_file = request.FILES["excel_file"]
+    fs.save(uploaded_file.name, uploaded_file)
 
-    if form.is_valid():
-
-        form.save()
-
-    object_list = list()
-    for object in ExcelFile.objects.all():
-        object_list.append(str(object))
     console_text = "file saved"
-    return render(request, 'index.html', {
+    return __render_home(request, console_text)
 
-            "console_text": console_text,
-            "form": ExcelUploadForm,
-            "object_list": object_list
 
-        })
+def __get_file_list():
+
+    return fs.listdir(fs.base_location)[1]
+
 
