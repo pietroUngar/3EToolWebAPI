@@ -1,5 +1,0 @@
-requests
-Django~=4.0.1
-3ETool==0.3.9
-gunicorn
-whitenoise
