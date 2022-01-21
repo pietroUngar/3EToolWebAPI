@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath EEEToolApp EEEToolApp.wsgi
+web: gunicorn --pythonpath EEEToolApp. EEEToolApp.wsgi
