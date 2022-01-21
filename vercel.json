@@ -2,7 +2,7 @@
 
     "builds": [{
 
-        "src": "EEEToolApp.EEEToolApp.wsgi",
+        "src": "EEEToolApp/wsgi.py",
         "use": "@ardnt/vercel-python-wsgi",
         "config": { "maxLambdaSize": "50mb" }
 
@@ -11,7 +11,7 @@
 
         {
             "src": "/(.*)",
-            "dest": "EEEToolApp.EEEToolApp.wsgi"
+            "dest": "EEEToolApp/wsgi.py"
         }
 
     ]
