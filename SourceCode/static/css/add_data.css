@@ -1,0 +1,136 @@
+.add-container {
+
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-around;
+  justify-content: space-around;
+  padding: 50px;
+  gap: 30px;
+
+}
+
+.add-container .title-text {
+
+    font-size: 3rem;
+    text-align: left;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: normal;
+
+}
+
+.add-container .text-fancy {
+
+    font-size: 30px;
+    height: fit-content;
+    text-align: justify;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: lighter;
+
+}
+
+.add-container .buttons-container{
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-evenly;
+    gap: 20px;
+
+}
+
+.subsection-class {
+
+  width: inherit;
+  border-top: 1px solid #969696;
+  margin-top: var(--dl-space-space-fourunits);
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+
+}
+
+.subsection-class .text-title {
+
+    font-size: 20px;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+
+  }
+
+.subsection-class .text-explain {
+
+    font-size: 20px;
+    font-family: Bad Script, fantasy;
+    max-width: var(--dl-size-size-maxwidth);
+
+  }
+
+.subsection-class .subsection-container {
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: stretch;
+  justify-content: center;
+  gap: 50px 10px;
+  margin-top: var(--dl-space-space-unit);
+
+}
+.subsection-class .subsection-container .container-sub-subsection {
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  border-radius: 25px;
+  border: 1px solid #969696;
+  padding: 20px;
+  gap: 10px;
+
+}
+
+.subsection-class .subsection-container .container-sub-subsection .input_container {
+
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin-right: 0px;
+  gap: var(--dl-space-space-unit);
+
+}
+
+.subsection-class .subsection-container .container-sub-subsection .input_container .property-name {
+
+  width: var(--dl-size-size-medium);
+  align-self: center;
+  text-align: left;
+
+}
+
+.subsection-class .subsection-container .container-sub-subsection .input_container .property-name .small {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.subsection-class .subsection-container .container-sub-subsection .input_container .text-input {
+
+  width: var(--dl-size-size-large);
+  height: 30px;
+
+}
+
+.subsection-class .subsection-container .container-sub-subsection .input_container .select-cls {
+
+  align-self: center;
+  margin-left: 0px;
+
+}

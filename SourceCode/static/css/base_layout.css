@@ -1,0 +1,116 @@
+.base-container {
+
+    width: auto;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.main_header_container{
+
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: center;
+    padding: 5vh 15vh;
+    position: fixed;
+    background: #ffffff;
+    border-bottom: 1px solid #969696;
+
+}
+
+.header_class {
+
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    max-width: var(--dl-size-size-maxwidth);
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+
+}
+
+.header-logo-image {
+
+    max-width: 100%;
+    max-height:20vh;
+    width: auto;
+    height: auto;
+    aspect-ratio: initial;
+
+}
+
+.qr-code-image {
+
+    display: block;
+    height:20vh;
+
+    border-radius: 25px;
+    border: 2px solid #000000;
+
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering: -o-crisp-edges;            /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated;                 /* Universal support since 2021   */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+
+}
+
+.content-class{
+    
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content:center;
+    align-content: center;
+    align-items: center;
+    margin-top: 30vh;
+    gap: 20px;
+
+}
+
+.header-text-fancy {
+
+    font-size: 30px;
+    width: 20vh;
+    height: fit-content;
+    text-align: left;
+    font-family: "Titillium Web", sans-serif ;
+    font-weight: lighter;
+    font-style: italic;
+    margin-top: var(--dl-space-space-twounits);
+    margin-bottom: var(--dl-space-space-twounits);
+
+}
+
+.footer_class {
+
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--dl-size-size-maxwidth);
+    padding-top: var(--dl-space-space-twounits);
+    padding-left: var(--dl-space-space-threeunits);
+    padding-right: var(--dl-space-space-threeunits);
+    padding-bottom: var(--dl-space-space-twounits);
+
+}
+
+.footer_text {
+
+    text-align: justify;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 400;
+
+}

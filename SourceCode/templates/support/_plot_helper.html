@@ -1,0 +1,58 @@
+{% macro render_comparison_plot_script(plotter) %}
+<script>
+
+    new Chart(document.getElementById({{ plotter.id | tojson }}), {
+
+        type: 'scatter',
+        data: {
+
+            datasets: [
+                {% for curr_dataset in plotter.datasets%}
+                    {
+                        type: {{ curr_dataset.line_style | tojson }},
+                        label: {{ curr_dataset.label | tojson }},
+                        data: [
+
+                            {% for i in range(curr_dataset.data_length)%}
+                                {
+                                    x: {{ curr_dataset.get_value(i, "x") | tojson }},
+                                    y: {{ curr_dataset.get_value(i, "y") | tojson }}
+                                },
+                            {% endfor %}
+
+                        ],
+                        {% for option_key in curr_dataset.dataset_options.keys()%}
+                        {{ option_key | tojson }}: {{ curr_dataset.dataset_options[option_key] | tojson }},
+                        {% endfor %}
+
+                    },
+                {% endfor %}
+            ],
+        },
+
+        options: {
+
+            scales: {
+
+                x: {
+                    type: 'linear',
+                    title: {
+                        display: true,
+                        text: {{ plotter.ax_labels["x"] | tojson }}
+                    }
+                },
+
+                y: {
+                    type: 'linear',
+                    title: {
+                        display: true,
+                        text: {{ plotter.ax_labels["y"] | tojson }}
+                    }
+                }
+            }
+
+        },
+
+    });
+</script>
+{%endmacro%}

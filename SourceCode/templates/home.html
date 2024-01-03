@@ -1,0 +1,18 @@
+{%extends "0 - base_layout.html"%}
+{% from "support/_plot_helper.html" import render_comparison_plot_script%}
+{%block title%}Main {%endblock%}
+{%block content%}
+  <header data-role="Header" class="main_header_container">
+      <a href='https://www.unifi.it/changelang-eng.html' target="_blank" rel="noopener noreferrer">
+          <img alt="logo" src="../static/images/logo_unifi.png" class="header-logo-image"/>
+      </a>
+      <a href='https://www.dief.unifi.it/vp-167-serg.html' target="_blank" rel="noopener noreferrer">
+          <img alt="logo" src="../static/images/logoSERG.png" class="header-logo-image"/>
+      </a>
+  </header>
+  <div class="content-class">
+    <a href="/upload">
+        <button class="home-button button">Upload Excel File</button>
+    </a>
+  </div>
+{%endblock%}
